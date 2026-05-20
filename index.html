@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wynik - Stopy Biegacza</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 { font-size: 28px; margin-bottom: 10px; color: #1a1a1a; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 16px; }
+        .question { font-size: 18px; font-weight: 600; margin-bottom: 25px; color: #333; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 18px 20px;
+            margin: 12px 0;
+            border: 3px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn-green { border-color: #10b981; }
+        .btn-green:hover { background: #10b981; color: white; }
+        .btn-yellow { border-color: #f59e0b; }
+        .btn-yellow:hover { background: #f59e0b; color: white; }
+        .btn-red { border-color: #ef4444; }
+        .btn-red:hover { background: #ef4444; color: white; }
+        .result { display: none; animation: fadeIn 0.5s; }
+        .result.show { display: block; }
+        .result-icon { font-size: 60px; margin-bottom: 15px; }
+        .result-title { font-size: 24px; font-weight: 700; margin-bottom: 15px; }
+        .result-text { font-size: 16px; line-height: 1.6; color: #555; margin-bottom: 25px; }
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 28px;
+            background: #667eea;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 6px;
+            transition: all 0.3s;
+            width: calc(100% - 12px);
+        }
+        .cta-btn:hover { background: #5568d3; transform: scale(1.02); }
+        .cta-btn-secondary { background: #00b39b; }
+        .cta-btn-secondary:hover { background: #009688; }
+        .cta-btn-phone { background: #ef4444; }
+        .cta-btn-phone:hover { background: #dc2626; }
+        .back { 
+            margin-top: 20px; 
+            color: #667eea; 
+            cursor: pointer; 
+            text-decoration: underline;
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- EKRAN STARTOWY -->
+        <div id="start">
+            <h1>🦶 Dziękujemy za ankietę!</h1>
+            <p class="subtitle">Sprawdź w jakiej kondycji są Twoje stopy</p>
+            <p class="question">Ile z tych problemów dotyczy Ciebie?</p>
+            <p style="font-size: 14px; color: #888; margin-bottom: 25px;">
+                - Pęcherze po każdym długim biegu<br>
+                - Czarne paznokcie<br>
+                - Ból pięty rano<br>
+                - Wrastające paznokcie<br>
+                - Rozcięgno podeszwowe<br>
+                - Haluksy lub odciski
+            </p>
+            
+            <button class="btn btn-green" onclick="showResult('low')">
+                ✅ 0-2 problemy<br><span style="font-size: 13px; font-weight: 400;">Moje stopy są OK</span>
+            </button>
+            
+            <button class="btn btn-yellow" onclick="showResult('medium')">
+                ⚠️ 3-5 problemów<br><span style="font-size: 13px; font-weight: 400;">Mam sygnały ostrzegawcze</span>
+            </button>
+            
+            <button class="btn btn-red" onclick="showResult('high')">
+                🚨 6+ problemów<br><span style="font-size: 13px; font-weight: 400;">Moje stopy wołają o pomoc</span>
+            </button>
+        </div>
+
+        <!-- WYNIK: NISKIE RYZYKO -->
+        <div id="low" class="result">
+            <div class="result-icon">💪</div>
+            <div class="result-title" style="color: #10b981;">Profilaktyka to podstawa</div>
+            <div class="result-text">
+                Twoje stopy są w dobrej kondycji, ale bieganie to sport kontuzyjny. Warto zrobić przegląd u specjalisty raz w roku żeby wychwycić problemy zanim się pojawią.
+                <br><br>
+                <strong>Zalecenie:</strong> Kontrolna wizyta u podologa lub fizjoterapeuty sportowego. Sprawdzi biomechanikę, dobór butów i da wskazówki na przyszłość.
+            </div>
+            <a href="https://booksy.com/pl-pl/dl/show-business/214313?utm_medium=c2c_referral" class="cta-btn">🗓️ UMÓW PODOLOGA - BOOKSY</a>
+            <a href="https://www.znanylekarz.pl/dawid-mikolajczak/fizjoterapeuta/poznan" class="cta-btn cta-btn-secondary">👨‍⚕️ FIZJOTERAPEUTA - ZnanyLekarz</a>
+            <a href="tel:+48792596160" class="cta-btn cta-btn-phone">📞 ZADZWOŃ: 792 596 160</a>
+            <div class="back" onclick="goBack()">← Sprawdź inny wynik</div>
+        </div>
+
+        <!-- WYNIK: ŚREDNIE RYZYKO -->
+        <div id="medium" class="result">
+            <div class="result-icon">⚠️</div>
+            <div class="result-title" style="color: #f59e0b;">Czas na konsultację</div>
+            <div class="result-text">
+                Masz kilka sygnałów ostrzegawczych. Na tym etapie specjalista może jeszcze pomóc bez wkładek ortopedycznych czy zabiegów. Im szybciej zareagujesz, tym krótsza przerwa w bieganiu.
+                <br><br>
+                <strong>Rekomendacja:</strong><br>
+                Wizyta u podologa lub fizjoterapeuty w ciągu 2-3 tygodni. Zabierz buty biegowe na konsultację.
+            </div>
+            <a href="https://booksy.com/pl-pl/dl/show-business/214313?utm_medium=c2c_referral" class="cta-btn">🗓️ UMÓW PODOLOGA - BOOKSY</a>
+            <a href="https://www.znanylekarz.pl/dawid-mikolajczak/fizjoterapeuta/poznan" class="cta-btn cta-btn-secondary">👨‍⚕️ FIZJOTERAPEUTA - ZnanyLekarz</a>
+            <a href="tel:+48792596160" class="cta-btn cta-btn-phone">📞 ZADZWOŃ: 792 596 160</a>
+            <div class="back" onclick="goBack()">← Sprawdź inny wynik</div>
+        </div>
+
+        <!-- WYNIK: WYSOKIE RYZYKO -->
+        <div id="high" class="result">
+            <div class="result-icon">🚨</div>
+            <div class="result-title" style="color: #ef4444;">Nie zwlekaj z wizytą</div>
+            <div class="result-text">
+                6+ problemów to czerwona flaga. Kontynuowanie treningów bez diagnozy może skończyć się przerwaniem sezonu, przewlekłym rozcięgnem podeszwowym lub operacją.
+                <br><br>
+                <strong>Musisz działać TERAZ:</strong><br>
+                Umów się do podologa lub fizjoterapeuty sportowego w tym tygodniu. Przynieś wszystkie pary butów biegowych na wizytę.
+            </div>
+            <a href="https://booksy.com/pl-pl/dl/show-business/214313?utm_medium=c2c_referral" class="cta-btn">🗓️ UMÓW PODOLOGA - BOOKSY</a>
+            <a href="https://www.znanylekarz.pl/dawid-mikolajczak/fizjoterapeuta/poznan" class="cta-btn cta-btn-secondary">👨‍⚕️ FIZJOTERAPEUTA - ZnanyLekarz</a>
+            <a href="tel:+48792596160" class="cta-btn cta-btn-phone">📞 ZADZWOŃ TERAZ: 792 596 160</a>
+            <div class="back" onclick="goBack()">← Sprawdź inny wynik</div>
+        </div>
+    </div>
+
+    <script>
+        function showResult(level) {
+            document.getElementById('start').style.display = 'none';
+            document.getElementById(level).classList.add('show');
+        }
+        
+        function goBack() {
+            document.querySelectorAll('.result').forEach(el => el.classList.remove('show'));
+            document.getElementById('start').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
